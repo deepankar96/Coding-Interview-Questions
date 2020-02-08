@@ -1,28 +1,19 @@
-class Solution:
-    # @param A : list of integers
-    # @param B : integer
-    # @return an integer
-    def searchInsert(self, A, B):
-
-        def binarySearch (arr, l, r, x): 
-            if r >= l: 
-          
-                mid = (l+r)/2
-          
-                # If element is present at the middle itself 
-                if arr[mid] == x: 
-                    return mid 
-                  
-                # If element is smaller than mid, then it can only 
-                # be present in left subarray 
-                elif arr[mid] > x: 
-                    binarySearch(arr, l, mid-1, x) 
-          
-                # Else the element can only be present in right subarray 
-                else: 
-                    binarySearch(arr, mid+1, r, x) 
-          
-            else: 
-                # Element is not present in the array
-                return 4
-        print(binarySearch (A, 0, len(A), B))
+def searchMatrix(self, A, B):
+        def binarySearch(arr,l,u,x):
+            mid = (l+u)/2
+            while l<=u:
+                if mid == x:
+                    return 1
+                elif mid > x:
+                    u = mid
+                elif mid < x:
+                    l = mid +1
+            return 0
+            
+        for i in range(len(A[0])):
+            if B>A[0][i]:
+                row = i-1
+                temp = []
+                for j in range(len(A)):
+                    temp.append(A[row][j])
+                return binarySearch(temp,0,len(A),B)
