@@ -1,0 +1,18 @@
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
+
+If the last word does not exist, return 0.
+
+Python solution:
+
+class Solution:
+    # @param A : string
+    # @return an integer
+    def lengthOfLastWord(self, A):
+        if len(A)==0:
+            return 0
+        split_arr = A.split(" ")
+        while(len(split_arr[-1])<=0):
+            split_arr.pop()
+            if(len(split_arr) == 0):
+                return 0
+        return len(split_arr[-1])
